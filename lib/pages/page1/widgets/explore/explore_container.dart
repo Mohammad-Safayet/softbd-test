@@ -13,17 +13,15 @@ class ExploreContainer extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            child: Text(
-              "Explore",
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+          Text(
+            "Explore",
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-          SingleChildScrollView(
+          const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+              children: [
                 CategoryButton(title: "Category 1"),
                 CategoryButton(title: "Category 2"),
                 CategoryButton(title: "Category 3"),
