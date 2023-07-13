@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               HeadingContainer(),
 
               // Custom DatePicker
-              ActivityContainer(),
+              const ActivityContainer(),
 
               const SizedBox(
                 height: 16.0,
