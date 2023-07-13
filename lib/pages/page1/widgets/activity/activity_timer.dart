@@ -136,7 +136,7 @@ class ArcPainter extends CustomPainter {
     _drawArcWithCenter(
       canvas,
       greyPaint,
-      center: Offset(35, -125),
+      center: const Offset(35, -125),
       radius: 20,
       startRadian: 3 * pi / 1.9,
       sweepRadian: pi / 180,

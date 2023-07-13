@@ -42,13 +42,10 @@ class ActivityTab extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         color: Colors.white54,
       ),
-      child: Column(
+      child: const Column(
         children: [
           // Day picker
-          DayPicker(
-            days: days,
-            today: today - 1,
-          ),
+          DayPicker(),
 
           // Time??
           Expanded(

@@ -1,14 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class DayPicker extends StatelessWidget {
+class DayPicker extends StatefulWidget {
   const DayPicker({
     Key? key,
-    required this.days,
-    required this.today,
   }) : super(key: key);
 
-  final List<String> days;
-  final int today;
+  @override
+  State<DayPicker> createState() => _DayPickerState();
+}
+
+class _DayPickerState extends State<DayPicker> {
+  List<String> days = [];
+  DateTime today = DateTime.now();
+  int currentMonth = DateTime.now().month;
+  final scrollController = ScrollController();
+
+  @override
+  void initState() {
+    getMonth(currentMonth);
+    scrollController.addListener(() {
+      setState(() {
+        currentMonth++;
+      });
+
+      if (scrollController.position.maxScrollExtent == scrollController.position.pixels) {
+        getMonth(currentMonth);
+      }
+    });
+
+    super.initState();
+  }
+
+  void getMonth(int month) {
+    final totalDays = daysInMonth(today, month);
+
+    final tempDays = List.generate(totalDays + 1, (index) {
+      final date = DateTime(today.year, month, index);
+
+      return DateFormat.E().format(date);
+    });
+    tempDays.removeAt(0);
+
+    days.addAll(tempDays);
+    print(days);
+  }
+
+  int daysInMonth(DateTime date, int month) {
+    var firstDayThisMonth = DateTime(date.year, month);
+    var firstDayNextMonth = DateTime(firstDayThisMonth.year,
+        firstDayThisMonth.month + 1, firstDayThisMonth.day);
+    return firstDayNextMonth.difference(firstDayThisMonth).inDays;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +63,14 @@ class DayPicker extends StatelessWidget {
       height: 100,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
+        controller: scrollController,
         itemCount: days.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           print("month ${days[index]}");
           return Container(
             margin: const EdgeInsets.all(8.0),
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             height: 40.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -39,9 +83,9 @@ class DayPicker extends StatelessWidget {
                   width: 30.0,
                   height: 30.0,
                   decoration: BoxDecoration(
-                    color: (today == index) ? Colors.pinkAccent : null,
+                    color: (today.day == index) ? Colors.pinkAccent : null,
                     borderRadius:
-                        (today == index) ? BorderRadius.circular(50.0) : null,
+                        (today.day == index) ? BorderRadius.circular(50.0) : null,
                   ),
                   child: Center(child: Text("${index + 1}")),
                 ),

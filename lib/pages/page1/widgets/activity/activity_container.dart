@@ -3,13 +3,13 @@ import 'package:safayet_technical_test/pages/page1/widgets/activity/activity_tab
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ActivityContainer extends StatelessWidget {
-  ActivityContainer({Key? key}) : super(key: key);
+  const ActivityContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final controller = PageController(initialPage: 0);
 
-    return Container(
+    return SizedBox(
       height: 600.0,
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -31,7 +31,7 @@ class ActivityContainer extends StatelessWidget {
             child: SmoothPageIndicator(
               controller: controller, // PageController
               count: 4,
-              effect: ExpandingDotsEffect(
+              effect: const ExpandingDotsEffect(
                 dotColor: Colors.white,
                 activeDotColor: Colors.pinkAccent,
               ), // your preferred effect
