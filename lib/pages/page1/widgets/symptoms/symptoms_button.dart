@@ -37,7 +37,7 @@ class SymptomsButton extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Image.asset(iconString),
             ),
-            SizedBox(
+            const SizedBox(
               width: 24.0,
             ),
             // text
