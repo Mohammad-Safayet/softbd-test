@@ -25,7 +25,7 @@ class SubSymptomButton extends StatelessWidget {
           await showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              content: Text(
+              content: const Text(
                 "Are you sure you want to add this",
               ),
               actions: [
@@ -34,14 +34,14 @@ class SubSymptomButton extends StatelessWidget {
                     controller.addSymptom(symptoms);
                     Navigator.pop(context);
                   },
-                  child: Text("Yes"),
+                  child: const Text("Yes"),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     controller.removeSymptom(symptoms);
                     Navigator.pop(context);
                   },
-                  child: Text("No"),
+                  child: const Text("No"),
                 ),
               ],
             ),
@@ -75,7 +75,7 @@ class SubSymptomButton extends StatelessWidget {
               Expanded(
                 child: Text(
                   symptoms.title,
-                  style: TextStyle(fontSize: 12.0),
+                  style: const TextStyle(fontSize: 12.0),
                 ),
               ),
             ],

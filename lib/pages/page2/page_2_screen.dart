@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:intl/intl.dart';
@@ -22,7 +21,7 @@ class Page2HomeScreen extends StatelessWidget {
         leading: Container(
           height: 45.0,
           width: 45.0,
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             // color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -53,7 +52,7 @@ class Page2HomeScreen extends StatelessWidget {
                   .titleLarge
                   ?.copyWith(color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               width: 8.0,
             ),
             Text(
@@ -69,12 +68,12 @@ class Page2HomeScreen extends StatelessWidget {
           Container(
             height: 30.0,
             width: 30.0,
-            margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
             decoration: BoxDecoration(
               color: Colors.grey.shade400,
               borderRadius: BorderRadius.circular(500.0),
             ),
-            child: Icon(
+            child: const Icon(
               Icons.question_mark_outlined,
               color: Colors.white,
             ),
@@ -82,7 +81,7 @@ class Page2HomeScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Stack(
           children: [
             Obx(
@@ -97,7 +96,7 @@ class Page2HomeScreen extends StatelessWidget {
                           itemCount: _controller.symptoms.length,
                           itemBuilder: (context, index) {
                             final symptom = _controller.symptoms[index];
-                            return Container(
+                            return SizedBox(
                               height: 130.0,
                               child: Column(
                                 children: [
@@ -140,10 +139,10 @@ class Page2HomeScreen extends StatelessWidget {
                     context: context,
                     builder: (BuildContext dialogContext) {
                       return AlertDialog(
-                        title: Text('Added Symtoms'),
+                        title: const Text('Added Symtoms'),
                         content: _controller.addedSymptoms.isEmpty
-                            ? Text("No added symptoms found!")
-                            : Container(
+                            ? const Text("No added symptoms found!")
+                            : SizedBox(
                                 height: 250.0,
                                 width: 200.0,
                                 child: ListView.builder(
@@ -163,7 +162,7 @@ class Page2HomeScreen extends StatelessWidget {
                               ),
                         actions: <Widget>[
                           TextButton(
-                            child: Text('Close'),
+                            child: const Text('Close'),
                             onPressed: () {
                               Navigator.of(dialogContext)
                                   .pop(); // Dismiss alert dialog
