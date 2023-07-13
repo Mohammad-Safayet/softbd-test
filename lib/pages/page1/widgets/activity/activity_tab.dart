@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:safayet_technical_test/pages/page1/widgets/activity/activity_day_picker.dart';
 import 'package:safayet_technical_test/pages/page1/widgets/activity/activity_timer.dart';
 
+// ignore: must_be_immutable
 class ActivityTab extends StatelessWidget {
   ActivityTab({Key? key}) : super(key: key);
 
